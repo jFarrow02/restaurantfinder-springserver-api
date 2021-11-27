@@ -6,6 +6,9 @@ import com.restaurantfinder.api.models.Restaurant;
 import com.restaurantfinder.api.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,16 +41,28 @@ public class RestaurantsController {
 
     @GetMapping(path="/find-one/id/{restaurantId}")
     public @ResponseBody Restaurant findRestaurantByRestaurantId (@PathVariable("restaurantId") String restaurantId) {
-        return null;
+        Restaurant restaurant = this._restaurantService.findByRestaurantId(restaurantId);
+        if(restaurant == null) {
+            throw new ResourceNotFoundException(ResourceTypes.RESTAURANT, restaurantId);
+        }
+        return restaurant;
     }
 
     @GetMapping(path="find-many/borough/{borough}")
-    public @ResponseBody List<Restaurant> findRestaurantsByBorough(@PathVariable("borough") String borough){
-        return null;
+    public HttpEntity<List<Restaurant>> findRestaurantsByBorough(@PathVariable("borough") String borough){
+        List<Restaurant> restaurants = this._restaurantService.findByBorough(borough);
+        if(restaurants == null){
+            throw new ResourceNotFoundException(ResourceTypes.RESTAURANT, borough);
+        }
+        return new ResponseEntity<>(restaurants, HttpStatus.OK);
     }
 
     @GetMapping(path="find-many/cuisine/{cuisineType}")
-    public @ResponseBody List<Restaurant> findRestaurantsByCuisineType(@PathVariable("cuisineType") String cuisineType){
-        return null;
+    public HttpEntity<List<Restaurant>> findRestaurantsByCuisineType(@PathVariable("cuisineType") String cuisineType){
+        List<Restaurant> restaurants = this._restaurantService.findByCuisine(cuisineType);
+        if(restaurants == null) {
+            throw new ResourceNotFoundException(ResourceTypes.RESTAURANT, cuisineType);
+        }
+        return new ResponseEntity<>(restaurants, HttpStatus.OK);
     }
 }

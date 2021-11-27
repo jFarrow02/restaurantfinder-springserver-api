@@ -25,6 +25,10 @@ public class RestaurantService {
         return this._restaurantRepository.findByName(name);
     }
 
+    public Restaurant findByRestaurantId(String restaurantId) {
+        return this._restaurantRepository.findByRestaurantId(restaurantId);
+    }
+
     public List<Restaurant> findByBorough(String borough) {
         return this._restaurantRepository.findByBorough(borough);
     }

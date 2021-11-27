@@ -19,10 +19,10 @@ public class GradesController {
         this._gradeService = gradeService;
     }
 
-    @GetMapping(path="/find-all")
-    public List<Grade> findAllGrades(){
-        return _gradeService.findAllGrades();
-    }
+//    @GetMapping(path="/find-all")
+//    public List<Grade> findAllGrades(){
+//        return _gradeService.findAllGrades();
+//    }
 
     @GetMapping(path="/find-by")
     public List<Grade> findGradeByRestaurantId(@Param("restaurantId") String restaurantId) {

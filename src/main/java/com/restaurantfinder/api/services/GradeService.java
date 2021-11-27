@@ -18,9 +18,9 @@ public class GradeService {
         this._gradeRepository = gradeRepository;
     }
 
-    public List<Grade> findAllGrades() {
-        return _gradeRepository.findAll();
-    }
+//    public List<Grade> findAllGrades() {
+//        return _gradeRepository.findAll();
+//    }
 
     public List<Grade> findGradeByRestaurantId(String restaurantId) {
         return _gradeRepository.getGradesByRestaurantId(restaurantId);
