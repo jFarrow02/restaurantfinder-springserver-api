@@ -2,7 +2,6 @@ package com.restaurantfinder.api.services;
 
 import com.restaurantfinder.api.models.Grade;
 import com.restaurantfinder.api.repositories.GradeRepository;
-import com.restaurantfinder.api.repositories.GradeRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +10,10 @@ import java.util.List;
 @Service
 public class GradeService {
 
-    private final GradeRepositoryImpl _gradeRepository;
+    private final GradeRepository _gradeRepository;
 
     @Autowired
-    public GradeService(GradeRepositoryImpl gradeRepository) {
+    public GradeService(GradeRepository gradeRepository) {
         this._gradeRepository = gradeRepository;
     }
 

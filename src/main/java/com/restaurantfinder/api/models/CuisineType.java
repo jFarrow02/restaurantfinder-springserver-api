@@ -16,8 +16,7 @@ public class CuisineType {
     @Field
     private String cuisineId;
 
-    public CuisineType(String id, String cuisineType, String cuisineId) {
-        this.id = id;
+    public CuisineType(String cuisineType, String cuisineId) {
         this.cuisineType = cuisineType;
         this.cuisineId = cuisineId;
     }
