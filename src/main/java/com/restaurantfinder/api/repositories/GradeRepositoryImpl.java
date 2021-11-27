@@ -28,6 +28,9 @@ public class GradeRepositoryImpl implements GradeRepository {
         return result;
     }
 
+    public Grade createGrade(Grade grade) {
+        return mongoTemplate.insert(grade, "grades");
+    }
     @Override
     public <S extends Grade> S save(S entity) {
         return null;

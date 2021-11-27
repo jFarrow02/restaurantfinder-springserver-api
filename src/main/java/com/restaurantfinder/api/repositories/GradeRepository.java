@@ -10,4 +10,5 @@ import java.util.List;
 public interface GradeRepository extends MongoRepository<Grade, String> {
 
     List<Grade> getGradesByRestaurantId(String restaurantId);
+    Grade createGrade(Grade grade);
 }

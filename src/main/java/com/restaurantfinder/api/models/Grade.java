@@ -11,7 +11,7 @@ public class Grade {
     private String id;
 
     @Field
-    private long gradeDate;
+    private Long gradeDate;
 
     @Field
     private String score;
@@ -19,11 +19,14 @@ public class Grade {
     @Field
     private String restaurantId;
 
-    public Grade(String id, long gradeDate, String score, String restaurantId) {
-        this.id = id;
+    @Field
+    private String grade;
+
+    public Grade(Long gradeDate, String score, String restaurantId, String grade) {
         this.gradeDate = gradeDate;
         this.score = score;
         this.restaurantId = restaurantId;
+        this.grade = grade;
     }
 
     public String getId() {
@@ -56,5 +59,13 @@ public class Grade {
 
     public void setRestaurantId(String restaurantId) {
         this.restaurantId = restaurantId;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 }

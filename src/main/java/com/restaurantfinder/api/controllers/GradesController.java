@@ -4,9 +4,7 @@ import com.restaurantfinder.api.models.Grade;
 import com.restaurantfinder.api.services.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +27,10 @@ public class GradesController {
     @GetMapping(path="/find-by")
     public List<Grade> findGradeByRestaurantId(@Param("restaurantId") String restaurantId) {
         return _gradeService.findGradeByRestaurantId(restaurantId);
+    }
+
+    @PostMapping(path="/create")
+    public Grade createGrade(@RequestBody Grade newGrade) {
+        return _gradeService.createGrade(newGrade);
     }
 }

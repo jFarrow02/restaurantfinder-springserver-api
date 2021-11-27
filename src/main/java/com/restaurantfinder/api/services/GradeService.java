@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class GradeService {
 
-    private final GradeRepository _gradeRepository;
+    private final GradeRepositoryImpl _gradeRepository;
 
     @Autowired
     public GradeService(GradeRepositoryImpl gradeRepository) {
@@ -24,5 +24,10 @@ public class GradeService {
 
     public List<Grade> findGradeByRestaurantId(String restaurantId) {
         return _gradeRepository.getGradesByRestaurantId(restaurantId);
+    }
+
+    public Grade createGrade(Grade grade) {
+//        System.out.println("in createGrade:" + grade.getRestaurantId()); // OK
+        return _gradeRepository.createGrade(grade);
     }
 }
