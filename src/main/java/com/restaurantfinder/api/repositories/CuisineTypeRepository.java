@@ -1,5 +1,6 @@
 package com.restaurantfinder.api.repositories;
 
+import com.mongodb.client.result.UpdateResult;
 import com.restaurantfinder.api.models.CuisineType;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +15,5 @@ public interface CuisineTypeRepository {
 
     public CuisineType createCuisineType(String type);
 
-    public CuisineType updateCuisineType(String cuisineId, CuisineType cuisineType);
+    public UpdateResult updateCuisineType(String cuisineId, CuisineType cuisineType);
 }

@@ -14,7 +14,7 @@ public class Grade {
     private Long gradeDate;
 
     @Field
-    private String score;
+    private int score;
 
     @Field
     private String restaurantId;
@@ -22,7 +22,10 @@ public class Grade {
     @Field
     private String grade;
 
-    public Grade(Long gradeDate, String score, String restaurantId, String grade) {
+    public Grade() {
+    }
+
+    public Grade(Long gradeDate, int score, String restaurantId, String grade) {
         this.gradeDate = gradeDate;
         this.score = score;
         this.restaurantId = restaurantId;
@@ -45,11 +48,11 @@ public class Grade {
         this.gradeDate = gradeDate;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 

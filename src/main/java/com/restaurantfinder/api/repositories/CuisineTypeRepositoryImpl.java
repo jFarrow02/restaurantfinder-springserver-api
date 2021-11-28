@@ -25,22 +25,22 @@ public class CuisineTypeRepositoryImpl implements CuisineTypeRepository{
     @Override
     public CuisineType getCuisineTypeByTypeName(String name) {
         Query query = new Query(Criteria.where("cuisineType").is(name));
-        CuisineType result = mongoTemplate.findOne(query, CuisineType.class);
+        CuisineType result = mongoTemplate.findOne(query, CuisineType.class, "cuisine-types");
         return result;
     }
 
     @Override
     public CuisineType createCuisineType(String type) {
         String newId = Integer.toString(mongoTemplate.findAll(CuisineType.class, "cuisine-types").size());
-        return mongoTemplate.insert(new CuisineType(type, newId), "cuisine-types");
+        return mongoTemplate.save(new CuisineType(type, newId), "cuisine-types");
     }
 
     @Override
-    public CuisineType updateCuisineType(String cuisineId, CuisineType cuisineType) {
+    public UpdateResult updateCuisineType(String cuisineId, CuisineType cuisineType) {
         Query query = new Query(Criteria.where("cuisineId").is(cuisineId));
         Update update = new Update();
         update.set("cuisineType", cuisineType.getCuisineType());
         UpdateResult result = mongoTemplate.updateFirst(query, update, "cuisine-types");
-        return cuisineType;
+        return result;
     }
 }
