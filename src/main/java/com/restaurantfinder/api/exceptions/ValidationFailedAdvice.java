@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class ResourceNotFoundAdvice {
+public class ValidationFailedAdvice {
 
     @ResponseBody
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public HttpErrorResponse handleResourceNotFound(ResourceNotFoundException e) {
-        return new HttpErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND.value(), e.getClass().getTypeName());
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ValidationFailedException.class)
+    public HttpErrorResponse handleResourceNotFound(ValidationFailedException e) {
+        return new HttpErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST.value(), e.getClass().getTypeName());
     }
 }

@@ -14,6 +14,6 @@ public class RecordCreateFailedAdvice {
     @ExceptionHandler(RecordCreateFailedException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public HttpErrorResponse handleRecordCreateFailedException(RecordCreateFailedException e) {
-        return new HttpErrorResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
+        return new HttpErrorResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getClass().getTypeName());
     }
 }
