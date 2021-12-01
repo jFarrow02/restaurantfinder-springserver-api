@@ -17,7 +17,7 @@ import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/grades")
+@RequestMapping(path="/restaurantfinder/grades")
 public class GradesController {
 
     private final GradeService _gradeService;
@@ -27,6 +27,7 @@ public class GradesController {
         this._gradeService = gradeService;
     }
 
+    @CrossOrigin
     @GetMapping(path="/find-by")
     public HttpEntity<List<Grade>> findGradeByRestaurantId(@Param("restaurantId") String restaurantId) {
         List<Grade> result =  _gradeService.findGradeByRestaurantId(restaurantId);
@@ -36,6 +37,7 @@ public class GradesController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping(path="/create")
     public HttpEntity<Grade> createGrade(@RequestBody Grade newGrade) {
 

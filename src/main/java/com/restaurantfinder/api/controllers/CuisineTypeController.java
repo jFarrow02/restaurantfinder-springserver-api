@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cuisine-types")
+@RequestMapping("/restaurantfinder/cuisine-types")
 public class CuisineTypeController {
 
     private CuisineTypeService _cuisineTypeService;
@@ -25,6 +25,7 @@ public class CuisineTypeController {
         this._cuisineTypeService = cuisineTypeService;
     }
 
+    @CrossOrigin
     @GetMapping("/find-all")
     public HttpEntity<List<CuisineType>> findAllCuisineTypes() {
         List<CuisineType> results = _cuisineTypeService.findAllCuisineTypes();
@@ -34,6 +35,7 @@ public class CuisineTypeController {
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping("/find-one/name/{name}")
     public HttpEntity<CuisineType> findCuisineTypeByName(@PathVariable("name") String name) {
         System.out.println("name:" + name);
@@ -44,6 +46,7 @@ public class CuisineTypeController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/new")
     public HttpEntity<CuisineType> createCuisineType(@RequestBody CuisineTypeRequest request) {
         CuisineType result = _cuisineTypeService.createCuisineType(request.getCuisineType());

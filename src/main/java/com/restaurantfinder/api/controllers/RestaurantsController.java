@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/restaurants")
+@RequestMapping(path="/restaurantfinder/restaurants")
 public class RestaurantsController {
 
     private final RestaurantService _restaurantService;
@@ -24,11 +24,13 @@ public class RestaurantsController {
         this._restaurantService = restaurantService;
     }
 
+    @CrossOrigin
     @GetMapping(path="/find-all")
     public @ResponseBody List<Restaurant> findAllRestaurants(){
         return this._restaurantService.findAllRestaurants();
     }
 
+    @CrossOrigin
     @GetMapping(path="/find-one/name/{name}")
     public @ResponseBody Restaurant findRestaurantByName (@PathVariable("name") String name) {
 
@@ -39,6 +41,7 @@ public class RestaurantsController {
         return restaurant;
     }
 
+    @CrossOrigin
     @GetMapping(path="/find-one/id/{restaurantId}")
     public @ResponseBody Restaurant findRestaurantByRestaurantId (@PathVariable("restaurantId") String restaurantId) {
         Restaurant restaurant = this._restaurantService.findByRestaurantId(restaurantId);
@@ -48,6 +51,7 @@ public class RestaurantsController {
         return restaurant;
     }
 
+    @CrossOrigin
     @GetMapping(path="find-many/borough/{borough}")
     public HttpEntity<List<Restaurant>> findRestaurantsByBorough(@PathVariable("borough") String borough){
         List<Restaurant> restaurants = this._restaurantService.findByBorough(borough);
@@ -57,6 +61,7 @@ public class RestaurantsController {
         return new ResponseEntity<>(restaurants, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(path="find-many/cuisine/{cuisineType}")
     public HttpEntity<List<Restaurant>> findRestaurantsByCuisineType(@PathVariable("cuisineType") String cuisineType){
         List<Restaurant> restaurants = this._restaurantService.findByCuisine(cuisineType);
