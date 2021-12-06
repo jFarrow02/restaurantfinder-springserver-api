@@ -4,6 +4,7 @@ import com.restaurantfinder.api.ResourceTypes;
 import com.restaurantfinder.api.exceptions.ResourceNotFoundException;
 import com.restaurantfinder.api.models.Restaurant;
 import com.restaurantfinder.api.services.RestaurantService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpEntity;
@@ -26,29 +27,33 @@ public class RestaurantsController {
 
     @CrossOrigin
     @GetMapping(path="/find-all")
-    public @ResponseBody List<Restaurant> findAllRestaurants(){
-        return this._restaurantService.findAllRestaurants();
+    public HttpEntity<List<Restaurant>> findAllRestaurants(){
+        List<Restaurant> results = this._restaurantService.findAllRestaurants();
+        if(results == null) {
+            throw new ResourceNotFoundException(ResourceTypes.RESTAURANT, "all");
+        }
+        return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
     @CrossOrigin
     @GetMapping(path="/find-one/name/{name}")
-    public @ResponseBody Restaurant findRestaurantByName (@PathVariable("name") String name) {
+    public HttpEntity<Restaurant> findRestaurantByName (@PathVariable("name") String name) {
 
         Restaurant restaurant = this._restaurantService.findByName(name);
         if(restaurant == null){
             throw new ResourceNotFoundException(ResourceTypes.RESTAURANT, name);
         }
-        return restaurant;
+        return new ResponseEntity<>(restaurant, HttpStatus.OK);
     }
 
     @CrossOrigin
     @GetMapping(path="/find-one/id/{restaurantId}")
-    public @ResponseBody Restaurant findRestaurantByRestaurantId (@PathVariable("restaurantId") String restaurantId) {
+    public HttpEntity<Restaurant> findRestaurantByRestaurantId (@PathVariable("restaurantId") String restaurantId) {
         Restaurant restaurant = this._restaurantService.findByRestaurantId(restaurantId);
         if(restaurant == null) {
             throw new ResourceNotFoundException(ResourceTypes.RESTAURANT, restaurantId);
         }
-        return restaurant;
+        return new ResponseEntity<>(restaurant, HttpStatus.OK);
     }
 
     @CrossOrigin

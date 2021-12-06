@@ -3,5 +3,6 @@ package com.restaurantfinder.api;
 public enum ResourceTypes {
     RESTAURANT,
     GRADE,
-    CUISINE_TYPE
+    CUISINE_TYPE,
+    ZIPCODE
 }
