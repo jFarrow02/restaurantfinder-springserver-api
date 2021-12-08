@@ -75,4 +75,24 @@ public class RestaurantsController {
         }
         return new ResponseEntity<>(restaurants, HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @GetMapping(path="find-many/zipcode/{zipcode}")
+    public HttpEntity<List<Restaurant>> findRestaurantsByZipcode(@PathVariable("zipcode") String zipcode){
+        List<Restaurant> restaurants = this._restaurantService.findByZipcode(zipcode);
+        if(restaurants == null) {
+            throw new ResourceNotFoundException(ResourceTypes.RESTAURANT, zipcode);
+        }
+        return new ResponseEntity<>(restaurants, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping(path="find-many/grade/{grade}")
+    public HttpEntity<List<Restaurant>> findRestaurantsByAverageGrade(@PathVariable("grade") String grade){
+        List<Restaurant> restaurants = this._restaurantService.findByGrade(grade);
+        if(restaurants == null) {
+            throw new ResourceNotFoundException(ResourceTypes.RESTAURANT, grade);
+        }
+        return new ResponseEntity<>(restaurants, HttpStatus.OK);
+    }
 }

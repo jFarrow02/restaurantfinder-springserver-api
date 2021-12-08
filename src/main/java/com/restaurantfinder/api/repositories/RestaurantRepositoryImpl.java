@@ -34,7 +34,7 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     };
 
     public List<Restaurant> findByCuisine(String cuisine) {
-        Query query = new Query(Criteria.where("borough").is(cuisine));
+        Query query = new Query(Criteria.where("cuisine").is(cuisine));
         List<Restaurant> results = mongoTemplate.find(query, Restaurant.class);
         return results;
     };
@@ -42,5 +42,15 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     public List<Restaurant> findAll() {
         List<Restaurant> results = mongoTemplate.findAll(Restaurant.class);
         return results;
+    }
+
+    public List<Restaurant> findByZipcode(String zipcode) {
+        Query query = new Query(Criteria.where("zipcode").is(zipcode));
+        List<Restaurant> results = mongoTemplate.find(query, Restaurant.class);
+        return results;
+    }
+
+    public List<Restaurant> findByGrade(String grade) {
+        return null;
     }
 }

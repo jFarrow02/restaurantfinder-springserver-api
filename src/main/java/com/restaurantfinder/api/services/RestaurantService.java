@@ -36,4 +36,12 @@ public class RestaurantService {
     public List<Restaurant> findByCuisine(String type) {
         return this._restaurantRepository.findByCuisine(type);
     }
+
+    public List<Restaurant> findByZipcode(String zip) {
+        return this._restaurantRepository.findByZipcode(zip);
+    }
+
+    public List<Restaurant> findByGrade(String grade) {
+        return this._restaurantRepository.findByGrade(grade);
+    }
 }

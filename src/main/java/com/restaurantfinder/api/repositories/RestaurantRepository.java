@@ -21,6 +21,12 @@ public interface RestaurantRepository {
     @Query("{cuisine: '?0'}")
     List<Restaurant> findByCuisine(String cuisine);
 
+    @Query("{zipcode: '?0'}")
+    List<Restaurant> findByZipcode(String zipcode);
+
+    @Query("{: '?0'}")
+    List<Restaurant> findByGrade(String grade);
+
     List<Restaurant> findAll();
 
 }
