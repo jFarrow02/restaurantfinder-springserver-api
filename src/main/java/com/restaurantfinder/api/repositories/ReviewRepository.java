@@ -11,4 +11,6 @@ public interface ReviewRepository {
     public List<Review> findReviewsByRestaurantId(String restaurantId);
 
     public Review findReviewByReviewId(String reviewId);
+
+    public Review createReview(Review review);
 }

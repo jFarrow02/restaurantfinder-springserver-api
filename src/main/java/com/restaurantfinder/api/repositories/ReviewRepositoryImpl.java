@@ -24,4 +24,8 @@ public class ReviewRepositoryImpl implements ReviewRepository {
         Query query = new Query(Criteria.where("reviewId").is(reviewId));
         return this._mongoTemplate.findOne(query, Review.class, "reviews");
     }
+
+    public Review createReview(Review review) {
+        return this._mongoTemplate.insert(review, "reviews");
+    }
 }

@@ -20,4 +20,8 @@ public class ReviewService {
     public List<Review> findReviewsByRestaurantId(String restaurantId) {
         return this._reviewRepository.findReviewsByRestaurantId(restaurantId);
     }
+
+    public Review createReview(Review review) {
+        return this._reviewRepository.createReview(review);
+    }
 }

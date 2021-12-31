@@ -4,5 +4,6 @@ public enum ResourceTypes {
     RESTAURANT,
     GRADE,
     CUISINE_TYPE,
-    ZIPCODE
+    ZIPCODE,
+    REVIEW,
 }
