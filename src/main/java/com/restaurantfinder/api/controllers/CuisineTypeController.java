@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/restaurantfinder/cuisine-types")
 public class CuisineTypeController {
 
-    private CuisineTypeService _cuisineTypeService;
+    private final CuisineTypeService _cuisineTypeService;
 
     @Autowired
     public CuisineTypeController(CuisineTypeService cuisineTypeService) {

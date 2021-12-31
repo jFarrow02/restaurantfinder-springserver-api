@@ -19,7 +19,8 @@ public class CuisineTypeRepositoryImpl implements CuisineTypeRepository{
 
     @Override
     public List<CuisineType> getCuisineTypes() {
-        return mongoTemplate.findAll(CuisineType.class);
+        List<CuisineType> results = mongoTemplate.findAll(CuisineType.class, "cuisine-types");
+        return results;
     }
 
     @Override

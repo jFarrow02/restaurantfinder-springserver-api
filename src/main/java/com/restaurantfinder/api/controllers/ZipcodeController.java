@@ -13,14 +13,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/restaurantfinder/zipcodes")
 public class ZipcodeController {
 
+
+    private final ZipcodeService _zipcodeService;
+
     @Autowired
-    private ZipcodeService _zipcodeService;
+    public ZipcodeController(ZipcodeService zipcodeService){
+        this._zipcodeService = zipcodeService;
+    }
 
     @GetMapping("/find-all")
     @CrossOrigin

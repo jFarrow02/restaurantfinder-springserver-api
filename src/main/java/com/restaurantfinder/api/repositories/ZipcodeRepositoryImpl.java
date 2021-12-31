@@ -14,6 +14,7 @@ public class ZipcodeRepositoryImpl implements ZipcodeRepository{
     private MongoTemplate mongoTemplate;
 
     public List<Zipcode> findAllZipcodes(){
-        return mongoTemplate.findAll(Zipcode.class);
+        List<Zipcode> results = mongoTemplate.findAll(Zipcode.class, "zipcodes");
+        return results;
     }
 }
